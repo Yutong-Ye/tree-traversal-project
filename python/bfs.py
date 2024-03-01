@@ -18,8 +18,16 @@ Implement Breadth First Search
 4. Return if target. Otherwise, go to step 2 and repeat.
 '''
 def bfs(graph, target_value):
-    pass
-
+    queue = [graph]
+    while queue:
+        current_node = queue.pop(0)
+        if current_node.value == target_value:
+            return current_node
+        if current_node.left:
+            queue.append(current_node.left)
+        if current_node.right:
+            queue.append(current_node.right)
+    return None
 
 # Pass these tests
 assert bfs(graph, 'G').value == 'G'

@@ -14,13 +14,30 @@ graph = n7
 Traverse the tree to find the minimum value in the tree
 '''
 def min_of_tree(graph):
-    pass
-
+    min_value = float('inf')
+    stack = [graph]
+    while stack:
+        current_node = stack.pop()
+        min_value = min(min_value, current_node.value)
+        if current_node.right:
+            stack.append(current_node.right)
+        if current_node.left:
+            stack.append(current_node.left)
+    return min_value
 '''
 Traverse the tree to find the maximum value in the tree
 '''
 def max_of_tree(graph):
-    pass
+    max_value = float('-inf')
+    stack = [graph]
+    while stack:
+        current_node = stack.pop()
+        max_value = max(max_value, current_node.value)
+        if current_node.right:
+            stack.append(current_node.right)
+        if current_node.left:
+            stack.append(current_node.left)
+    return max_value
 
 # Pass these tests
 assert min_of_tree(graph) == 1

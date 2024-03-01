@@ -18,8 +18,16 @@ Implement Depth First Search
 4. Return if target. Otherwise, go to step 2 and repeat.
 '''
 def dfs(graph, target_value):
-    pass
-
+    stack = [graph]
+    while stack:
+        current_node = stack.pop()
+        if current_node.value == target_value:
+            return current_node
+        if current_node.right:
+            stack.append(current_node.right)
+        if current_node.left:
+            stack.append(current_node.left)
+    return None
 
 # Pass these tests
 assert dfs(graph, 'G').value == 'G'
